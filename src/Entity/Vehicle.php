@@ -17,66 +17,33 @@ class Vehicle
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
     private Uuid $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $manufacturer = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $model = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $vin = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $engineType = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $transmission = null;
-
-    #[ORM\Column]
-    private ?int $doors = null;
-
-    #[ORM\Column]
-    private ?int $seats = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $driveType = null;
-
-    #[ORM\Column]
-    private ?int $horsePower = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $color = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $fuelType = null;
-
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt = null;
 
     public function __construct(
-        null|string $manufacturer = null,
-        null|string $model = null,
-        null|string $vin = null,
-        null|string $engineType = null,
-        null|string $transmission = null,
-        null|int $doors = null,
-        null|int $seats = null,
-        null|string $driveType = null,
-        null|int $horsePower = null,
-        null|string $color = null,
-        null|string $fuelType = null
+        #[ORM\Column(length: 255)]
+        private ?string $manufacturer = null,
+        #[ORM\Column(length: 255)]
+        private ?string $model = null,
+        #[ORM\Column(length: 255)]
+        private ?string $vin = null,
+        #[ORM\Column(length: 255)]
+        private ?string $engineType = null,
+        #[ORM\Column(length: 255)]
+        private ?string $transmission = null,
+        #[ORM\Column]
+        private ?int $doors = null,
+        #[ORM\Column]
+        private ?int $seats = null,
+        #[ORM\Column(length: 255)]
+        private ?string $driveType = null,
+        #[ORM\Column]
+        private ?int $horsePower = null,
+        #[ORM\Column(length: 255)]
+        private ?string $color = null,
+        #[ORM\Column(length: 255)]
+        private ?string $fuelType = null
     ) {
-        $this->manufacturer = $manufacturer;
-        $this->model = $model;
-        $this->vin = $vin;
-        $this->engineType = $engineType;
-        $this->transmission = $transmission;
-        $this->doors = $doors;
-        $this->seats = $seats;
-        $this->driveType = $driveType;
-        $this->horsePower = $horsePower;
-        $this->color = $color;
-        $this->fuelType = $fuelType;
         $this->createdAt = new DateTimeImmutable();
     }
 
