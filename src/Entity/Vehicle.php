@@ -53,33 +53,19 @@ class Vehicle
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt = null;
 
-    /**
-     * @param string|null $manufacturer
-     * @param string|null $model
-     * @param string|null $vin
-     * @param string|null $engineType
-     * @param string|null $transmission
-     * @param int|null $doors
-     * @param int|null $seats
-     * @param string|null $driveType
-     * @param int|null $horsePower
-     * @param string|null $color
-     * @param string|null $fuelType
-     */
     public function __construct(
         null|string $manufacturer = null,
-        null|string $model =null,
+        null|string $model = null,
         null|string $vin = null,
-        null|string $engineType =null,
-        null|string $transmission =null,
+        null|string $engineType = null,
+        null|string $transmission = null,
         null|int $doors = null,
         null|int $seats = null,
         null|string $driveType = null,
         null|int $horsePower = null,
         null|string $color = null,
         null|string $fuelType = null
-    )
-    {
+    ) {
         $this->manufacturer = $manufacturer;
         $this->model = $model;
         $this->vin = $vin;
@@ -93,6 +79,7 @@ class Vehicle
         $this->fuelType = $fuelType;
         $this->createdAt = new DateTimeImmutable();
     }
+
     public function getId(): null|Uuid
     {
         return $this->id;

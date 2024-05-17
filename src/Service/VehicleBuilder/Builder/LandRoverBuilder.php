@@ -19,7 +19,7 @@ final class LandRoverBuilder implements VehicleBuilderInterface
         $this->vehicle = new Vehicle();
     }
 
-    public function getObject() : Vehicle
+    public function getObject(): Vehicle
     {
         $vehicle = $this->vehicle;
         $this->reset();

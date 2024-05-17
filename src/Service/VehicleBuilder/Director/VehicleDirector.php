@@ -7,7 +7,7 @@ use App\Service\VehicleBuilder\Contract\VehicleBuilderInterface;
 
 final class VehicleDirector
 {
-    public function makeLandRover(VehicleBuilderInterface $vehicleBuilder) : Vehicle
+    public function makeLandRover(VehicleBuilderInterface $vehicleBuilder): Vehicle
     {
         $vehicleBuilder->reset();
         $vehicleBuilder->setManufacturer('Land Rover');
@@ -24,7 +24,7 @@ final class VehicleDirector
         return $vehicleBuilder->getObject();
     }
 
-    public function makeJaguarFtypeR75Coupe(VehicleBuilderInterface $vehicleBuilder) : Vehicle
+    public function makeJaguarFtypeR75Coupe(VehicleBuilderInterface $vehicleBuilder): Vehicle
     {
         $vehicleBuilder->reset();
         $vehicleBuilder->setManufacturer('Jaguar');
@@ -40,5 +40,4 @@ final class VehicleDirector
         $vehicleBuilder->setFuelType('petrol');
         return $vehicleBuilder->getObject();
     }
-
 }
