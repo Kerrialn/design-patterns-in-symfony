@@ -20,6 +20,9 @@ class Vehicle
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt = null;
 
+    #[ORM\OneToOne(inversedBy: 'vehicle', cascade: ['persist', 'remove'])]
+    private ?Manual $manual = null;
+
     public function __construct(
         #[ORM\Column(length: 255)]
         private ?string $manufacturer = null,
@@ -192,6 +195,18 @@ class Vehicle
     public function setCreatedAt(DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getManual(): ?Manual
+    {
+        return $this->manual;
+    }
+
+    public function setManual(?Manual $manual): static
+    {
+        $this->manual = $manual;
 
         return $this;
     }
