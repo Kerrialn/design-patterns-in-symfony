@@ -20,10 +20,12 @@ class Manual
     #[ORM\OneToOne(mappedBy: 'manual', cascade: ['persist', 'remove'])]
     private ?Vehicle $vehicle = null;
 
-    public function __construct(#[ORM\Column(length: 255)]
-    private ?string $title, #[ORM\Column(type: Types::TEXT)]
-    private ?string $content)
-    {
+    public function __construct(
+        #[ORM\Column(length: 255)]
+        private ?string $title,
+        #[ORM\Column(type: Types::TEXT)]
+        private ?string $content
+    ) {
     }
 
     public function getId(): null|Uuid
