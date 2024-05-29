@@ -17,25 +17,14 @@ class Manual
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
     private Uuid $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $title = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $content = null;
-
     #[ORM\OneToOne(mappedBy: 'manual', cascade: ['persist', 'remove'])]
     private ?Vehicle $vehicle = null;
 
-    /**
-     * @param string|null $title
-     * @param string|null $content
-     */
-    public function __construct(?string $title, ?string $content)
+    public function __construct(#[ORM\Column(length: 255)]
+    private ?string $title, #[ORM\Column(type: Types::TEXT)]
+    private ?string $content)
     {
-        $this->title = $title;
-        $this->content = $content;
     }
-
 
     public function getId(): null|Uuid
     {
@@ -87,5 +76,4 @@ class Manual
 
         return $this;
     }
-
 }

@@ -3,21 +3,16 @@
 namespace App\Controller;
 
 use App\Enum\PaymentTypeEnum;
-use App\Service\PaymentProccessorFactory\Contract\PaymentProcessorInterface;
 use App\Service\PaymentProccessorFactory\PaymentFactory;
-use App\Service\VehicleBuilder\Director\VehicleDirector;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class PaymentController extends AbstractController
 {
-
-
     public function __construct(
         private readonly PaymentFactory $paymentFactory
-    )
-    {
+    ) {
     }
 
     #[Route(path: '/payment', name: 'payment')]
@@ -27,5 +22,4 @@ class PaymentController extends AbstractController
         $payment = $paymentProcessor->process(50.00);
         dd($payment);
     }
-
 }
