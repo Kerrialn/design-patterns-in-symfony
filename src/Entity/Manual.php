@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\ManualRepository;
+use App\Service\CloneableService\Contract\CloneableInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: ManualRepository::class)]
-class Manual
+class Manual implements CloneableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
@@ -77,5 +78,9 @@ class Manual
         $this->vehicle = $vehicle;
 
         return $this;
+    }
+
+    public function __clone(): void
+    {
     }
 }

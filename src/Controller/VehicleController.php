@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Manual;
 use App\Service\VehicleBuilder\Builder\JaguarBuilder;
 use App\Service\VehicleBuilder\Builder\LandRoverBuilder;
 use App\Service\VehicleBuilder\Contract\VehicleBuilderInterface;
@@ -28,5 +29,19 @@ class VehicleController extends AbstractController
         $landRover = $vehicleDirector->makeLandRover($this->landRoverBuilder);
         $jaguar = $vehicleDirector->makeJaguarFtypeR75Coupe($this->jaguarBuilder);
         dd($landRover, $jaguar);
+    }
+
+
+    #[Route(path: '/vehicle/clone', name: 'vehicle_clone')]
+    public function PrototypeDesignPattern(): Response
+    {
+        $vehicleDirector = new VehicleDirector();
+        $jaguar = $vehicleDirector->makeJaguarFtypeR75Coupe($this->jaguarBuilder);
+        $jaguarManual = new Manual(title: 'jaguar manual',content: 'open car, get in and turn the key.');
+        $jaguar->setManual($jaguarManual);
+
+        $clonedJag = clone $jaguar;
+
+        dd($jaguar, $clonedJag);
     }
 }
