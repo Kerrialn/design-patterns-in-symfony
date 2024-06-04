@@ -29,6 +29,10 @@ class Manual implements CloneableInterface
     ) {
     }
 
+    public function __clone(): void
+    {
+    }
+
     public function getId(): null|Uuid
     {
         return $this->id;
@@ -78,9 +82,5 @@ class Manual implements CloneableInterface
         $this->vehicle = $vehicle;
 
         return $this;
-    }
-
-    public function __clone(): void
-    {
     }
 }

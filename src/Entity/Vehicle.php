@@ -51,6 +51,11 @@ class Vehicle implements CloneableInterface
         $this->createdAt = new DateTimeImmutable();
     }
 
+    public function __clone(): void
+    {
+        $this->manual = clone $this->manual;
+    }
+
     public function getId(): null|Uuid
     {
         return $this->id;
@@ -210,10 +215,5 @@ class Vehicle implements CloneableInterface
         $this->manual = $manual;
 
         return $this;
-    }
-
-    public function __clone(): void
-    {
-        $this->manual = clone $this->manual;
     }
 }
