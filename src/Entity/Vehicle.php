@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\VehicleRepository;
+use App\Service\CloneableService\Contract\CloneableInterface;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: VehicleRepository::class)]
-class Vehicle
+class Vehicle implements CloneableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
@@ -48,6 +49,11 @@ class Vehicle
         private ?string $fuelType = null
     ) {
         $this->createdAt = new DateTimeImmutable();
+    }
+
+    public function __clone(): void
+    {
+        $this->manual = clone $this->manual;
     }
 
     public function getId(): null|Uuid
