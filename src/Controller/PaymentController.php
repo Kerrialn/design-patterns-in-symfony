@@ -34,5 +34,4 @@ class PaymentController extends AbstractController
         $payment = $paymentProcessor->process(50.00);
         dd($payment);
     }
-
 }
